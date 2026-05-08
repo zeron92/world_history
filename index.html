@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Static Site</title>
+</head>
+<body>
+  <h1>ログイン済みユーザーだけが見られるページ</h1>
+  <p id="user"></p>
+  <a href="/.auth/logout">ログアウト</a>
+  <script>
+    // ログイン中のユーザー情報を表示してみる例
+    fetch('/.auth/me')
+      .then(r => r.json())
+      .then(d => {
+        const p = d.clientPrincipal;
+        document.getElementById('user').textContent =
+          p ? `こんにちは、${p.userDetails} さん` : '未ログインです';
+      });
+  </script>
+</body>
+</html>
+
+

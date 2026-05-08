@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>穴埋め学習サンプル</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            line-height: 1.8;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #f9f9f9;
+        }
+
+        .content-box {
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* 解答部分のスタイル */
+        .answer {
+            color: #d9534f; /* 解答の色（赤系） */
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            padding: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* まだクリックされていない（隠れている）状態 */
+        .answer.hidden {
+            color: transparent; /* 文字を透明にする */
+            background-color: #eee; /* 伏せ字の部分をグレーにする */
+            border-bottom: 1px solid #999;
+        }
+
+        /* マウスを乗せた時の動作 */
+        .answer.hidden:hover {
+            background-color: #ddd;
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-box">
+        <h1>歴史学習：サンプル問題</h1>
+        <p class="hint">※下線部のグレーの部分をクリックすると解答が表示されます。</p>
+
+        <div class="text-section">
+            <p>
+                1. 1492年、イタリア生まれの航海士である<span class="answer hidden">コロンブス</span>は、スペイン女王の援助を受けて西回り航路を開拓しようとした。
+            </p>
+            <p>
+                2. 彼が最初に到達した場所は、現在のバハマ諸島にある<span class="answer hidden">サンサルバドル島</span>であった。
+            </p>
+            <p>
+                3. 当時、この航海を支援したスペイン国王は<span class="answer hidden">イサベル</span>女王である。
+            </p>
+        </div>
+
+        <button onclick="resetAnswers()" style="margin-top: 20px; padding: 5px 15px; cursor: pointer;">
+            すべて隠す（リセット）
+        </button>
+    </div>
+
+    <script>
+        // すべての「answer」クラスを持つ要素を取得
+        const answerElements = document.querySelectorAll('.answer');
+
+        // 各要素にクリックイベントを追加
+        answerElements.forEach(function(element) {
+            element.addEventListener('click', function() {
+                // 「hidden」クラスを取り除くことで解答を表示
+                this.classList.toggle('hidden');
+            });
+        });
+
+        // リセットボタン用の関数
+        function resetAnswers() {
+            answerElements.forEach(function(element) {
+                element.classList.add('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
