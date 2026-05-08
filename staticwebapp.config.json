@@ -1,6 +1,6 @@
 {
   "navigationFallback": {
-    "rewrite": "/index.html"
+    "rewrite": "/menu.html"
   },
   "routes": [
     {
@@ -10,7 +10,7 @@
   ],
   "responseOverrides": {
     "401": {
-      "redirect": "/.auth/login/github",
+      "redirect": "/.auth/login/github?post_login_redirect_uri=/menu.html",
       "statusCode": 302
     }
   }

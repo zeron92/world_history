@@ -11,6 +11,13 @@ async function loadContent(pageUrl) {
 
         // 読み込んだ後に「穴埋め機能」を有効化する
         setupAnswers();
+
+        // 【追加】スマホ用：メニューをクリックしてコンテンツが切り替わったら、画面の最上部へスムーズに移動する
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
     } catch (error) {
         contentArea.innerHTML = "<p>読み込みに失敗しました。</p>";
     }
